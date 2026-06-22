@@ -3,246 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soufiane Lakhliy — Data Analyst</title>
-<meta name="description" content="Portfolio de Soufiane Lakhliy, étudiant en BUT Sciences des Données et alternant Data Analyst.">
+<title>Rihab Sfayty — Biostatisticienne</title>
+<meta name="description" content="Portfolio de Rihab Sfayty, étudiante en BUT Sciences des Données et biostatisticienne alternante au CHU de Nantes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --white:#FFFFFF;--surface:#F5F7FA;--surface-2:#EDF1F6;--border:#DCE3EC;
-    --text:#16243A;--muted:#5C6B7E;--navy:#16243A;--navy-700:#1E3354;--navy-500:#2C4A7C;
-    --accent:#3D6FB5;--accent-soft:#E8F0FA;
-    --shadow:0 1px 2px rgba(22,36,58,.06), 0 8px 24px rgba(22,36,58,.06);
-    --shadow-lg:0 12px 40px rgba(22,36,58,.12);
-    --radius:16px;--radius-sm:10px;--maxw:1120px;
+    --sand:#EFE6D6;--sand-deep:#E7DCC6;--cream:#FBF7EF;
+    --ink:#33302A;--ink-soft:#4A463C;--muted:#827763;--line:#DAD0BB;
+    --sage:#5E8576;--sage-deep:#456759;--sage-soft:#DEE8E1;
+    --shadow:0 1px 2px rgba(74,68,52,.05), 0 14px 34px rgba(74,68,52,.07);
+    --shadow-lg:0 24px 60px rgba(74,68,52,.14);
+    --radius:20px;--radius-sm:13px;--maxw:1060px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--sand);line-height:1.62;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;min-height:100vh}
   body.modal-open{overflow:hidden}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  section{padding:96px 0}
-  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
-  .eyebrow::before{content:"";width:24px;height:1.5px;background:var(--accent)}
-  h2.section-title{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(1.7rem,3.4vw,2.5rem);letter-spacing:-.02em;line-height:1.12;margin-bottom:14px}
-  .section-intro{color:var(--muted);max-width:620px;font-size:1.02rem;margin-bottom:46px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px;position:relative;z-index:1}
+
+  /* VAGUES DE FOND */
+  .bg-waves{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .bg-waves svg{width:100%;height:100%}
+  .bg-waves path{fill:none;stroke:#FFFFFF;stroke-opacity:.55;stroke-width:1.4}
+  @media (prefers-reduced-motion:no-preference){
+    .wave-drift{animation:drift 26s ease-in-out infinite alternate}
+    @keyframes drift{from{transform:translateX(-22px)}to{transform:translateX(22px)}}
+  }
+
+  .eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-deep);display:inline-flex;align-items:center;gap:12px;margin-bottom:18px}
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--sage)}
+  h2.section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.5rem);letter-spacing:-.01em;line-height:1.1;margin-bottom:14px}
+  .section-intro{color:var(--muted);max-width:640px;font-size:1.04rem;margin-bottom:46px}
 
   /* NAVBAR */
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s, box-shadow .3s}
-  header.nav.scrolled{border-color:var(--border);box-shadow:0 6px 20px rgba(22,36,58,.05)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .brand{font-family:'Sora',sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-  .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.85rem}
-  .nav-links{display:flex;align-items:center;gap:34px;list-style:none}
-  .nav-links a{font-size:.93rem;font-weight:500;color:var(--muted);transition:color .2s;position:relative}
-  .nav-links a:hover{color:var(--text)}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:width .25s}
-  .nav-links a:hover::after{width:100%}
-  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.92rem;padding:11px 20px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:transform .15s, background .2s, box-shadow .2s, border-color .2s;font-family:inherit}
-  .btn-primary{background:var(--navy);color:#fff}
-  .btn-primary:hover{background:var(--navy-700);transform:translateY(-1px);box-shadow:var(--shadow)}
-  .btn-ghost{background:#fff;color:var(--navy);border-color:var(--border)}
-  .btn-ghost:hover{border-color:var(--navy-500);transform:translateY(-1px)}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(239,230,214,.82);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s, box-shadow .3s}
+  header.nav.scrolled{border-color:var(--line);box-shadow:0 8px 24px rgba(74,68,52,.06)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;letter-spacing:-.01em;display:flex;align-items:center;gap:12px}
+  .brand .mark{width:38px;height:38px;border-radius:50%;background:var(--sage);color:var(--cream);display:grid;place-items:center;font-size:.86rem;font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+  .nav-links a{font-size:.93rem;font-weight:500;color:var(--muted);transition:color .2s;position:relative;cursor:pointer}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--sage);transition:width .25s}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.92rem;padding:12px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .15s, background .2s, box-shadow .2s, border-color .2s;font-family:inherit}
+  .btn-primary{background:var(--sage);color:var(--cream)}
+  .btn-primary:hover{background:var(--sage-deep);transform:translateY(-1px);box-shadow:var(--shadow)}
+  .btn-ghost{background:transparent;color:var(--sage-deep);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--sage);background:var(--cream);transform:translateY(-1px)}
   .btn svg{width:16px;height:16px}
   .nav-cta{display:flex;align-items:center;gap:14px}
-  .hamburger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:var(--navy)}
+  .hamburger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:var(--ink)}
   .hamburger svg{width:26px;height:26px}
 
-  /* HERO */
-  .hero{padding-top:84px;padding-bottom:96px}
-  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:64px;align-items:center}
-  .hero-status{font-family:'JetBrains Mono',monospace;font-size:.74rem;font-weight:600;letter-spacing:.1em;color:var(--accent);background:var(--accent-soft);border:1px solid #d4e3f5;padding:7px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;margin-bottom:26px}
-  .hero h1{font-family:'Sora',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.04;font-size:clamp(2.4rem,5.2vw,3.7rem);margin-bottom:20px}
-  .hero h1 .accent{color:var(--accent)}
-  .hero-role{font-family:'JetBrains Mono',monospace;font-size:.95rem;color:var(--navy-500);font-weight:500;margin-bottom:22px}
-  .hero p.lead{font-size:1.12rem;color:var(--muted);max-width:520px;margin-bottom:34px}
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
-  .hero-meta{display:flex;gap:30px;flex-wrap:wrap}
-  .hero-meta .item .k{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
-  .hero-meta .item .v{font-weight:600;color:var(--text)}
-  .hero-photo{justify-self:end;position:relative}
-  .photo-frame{width:300px;height:340px;border-radius:24px;overflow:hidden;border:6px solid var(--navy);background:var(--surface-2);box-shadow:var(--shadow-lg);position:relative}
+  /* VUES (pages) */
+  .view{display:none}
+  .view.active{display:block;animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .page{padding:74px 0 100px}
+  .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--sage-deep);font-weight:600;font-size:.9rem;margin-bottom:30px;cursor:pointer}
+  .back-link svg{width:16px;height:16px;transition:transform .2s}
+  .back-link:hover svg{transform:translateX(-4px)}
+
+  /* ACCUEIL — présentation */
+  .intro{padding:64px 0 30px}
+  .intro-grid{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start}
+  .intro-photo{position:relative}
+  .photo-frame{width:200px;height:248px;border-radius:100px 100px 22px 22px;overflow:hidden;border:6px solid var(--cream);background:var(--sand-deep);box-shadow:var(--shadow-lg)}
   .photo-frame img{width:100%;height:100%;object-fit:cover}
-  .photo-frame .media-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--navy-500);text-align:center;padding:20px}
-  .photo-frame .media-fallback span{font-family:'JetBrains Mono',monospace;font-size:.78rem}
-  .photo-badge{position:absolute;bottom:-18px;left:-26px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:13px 17px;box-shadow:var(--shadow);display:flex;align-items:center;gap:11px}
-  .photo-badge .icon{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent)}
-  .photo-badge .icon svg{width:20px;height:20px}
-  .photo-badge .t{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .photo-badge .s{font-weight:700;font-size:.95rem;font-family:'Sora',sans-serif}
+  .photo-frame .media-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:var(--sage-deep);text-align:center;padding:16px}
+  .photo-frame .media-fallback svg{width:36px;height:36px}
+  .photo-frame .media-fallback span{font-size:.72rem;color:var(--muted)}
+  .intro-text h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,4.4vw,2.9rem);letter-spacing:-.015em;line-height:1.05;margin-bottom:6px}
+  .intro-text .role{color:var(--sage-deep);font-weight:600;font-size:1rem;margin-bottom:22px}
+  .intro-text p{color:var(--ink-soft);margin-bottom:15px;font-size:1.04rem;max-width:600px}
+  .intro-text p strong{color:var(--ink);font-weight:600}
+  .intro-text .mail{color:var(--sage-deep);font-weight:600}
+  .intro-actions{margin-top:26px}
 
-  /* ABOUT */
-  .about{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-  .about-text p{color:var(--muted);margin-bottom:18px;font-size:1.04rem}
-  .about-text p strong{color:var(--text);font-weight:600}
-  .next-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
-  .next-card h3{font-family:'Sora',sans-serif;font-size:1.2rem;margin-bottom:16px;letter-spacing:-.01em}
-  .next-list{list-style:none;display:flex;flex-direction:column;gap:13px}
-  .next-list li{display:flex;gap:12px;font-size:.97rem;color:var(--muted)}
-  .next-list li svg{width:18px;height:18px;color:var(--accent);flex-shrink:0;margin-top:3px}
+  /* ACCUEIL — bulles cliquables */
+  .tiles-wrap{padding:20px 0 110px}
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .tile{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:42px 36px;text-align:center;box-shadow:var(--shadow);transition:transform .22s, box-shadow .22s, border-color .22s;cursor:pointer;position:relative;display:flex;flex-direction:column;align-items:center}
+  .tile:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--sage)}
+  .tile .ic{width:54px;height:54px;border-radius:15px;background:var(--sage-soft);color:var(--sage-deep);display:grid;place-items:center;margin-bottom:20px}
+  .tile .ic svg{width:26px;height:26px}
+  .tile h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.45rem;letter-spacing:-.01em;margin-bottom:10px}
+  .tile p{color:var(--muted);font-size:.95rem;max-width:340px;margin-bottom:18px}
+  .tile .go{color:var(--sage-deep);font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:7px;margin-top:auto}
+  .tile .go svg{width:15px;height:15px;transition:transform .2s}
+  .tile:hover .go svg{transform:translateX(4px)}
 
-  /* COMPETENCES */
+  /* COMPÉTENCES */
   .comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .comp-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:transform .2s, box-shadow .2s, border-color .2s;position:relative;overflow:hidden}
-  .comp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#c7d4e3}
-  .comp-card .code{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.12em;color:var(--accent);background:var(--accent-soft);padding:5px 10px;border-radius:7px;display:inline-block;margin-bottom:18px}
-  .comp-card h3{font-family:'Sora',sans-serif;font-size:1.12rem;line-height:1.3;margin-bottom:10px;letter-spacing:-.01em}
-  .comp-card p{color:var(--muted);font-size:.93rem}
-  .comp-card .num{position:absolute;top:18px;right:22px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--surface-2)}
+  .comp-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden;transition:transform .2s, box-shadow .2s}
+  .comp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .comp-card .code{font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-deep);background:var(--sage-soft);padding:6px 12px;border-radius:999px;display:inline-block;margin-bottom:18px}
+  .comp-card h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.14rem;line-height:1.3;margin-bottom:10px;letter-spacing:-.01em}
+  .comp-card p{color:var(--muted);font-size:.92rem}
+  .comp-card .num{position:absolute;top:24px;right:26px;font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:1.5rem;color:var(--line)}
+
+  /* LOGICIELS */
+  .skills{display:flex;flex-direction:column;gap:30px}
+  .skill-group h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;margin-bottom:16px;color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:11px}
+  .chip{background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:.92rem;font-weight:500;color:var(--ink-soft);box-shadow:var(--shadow);transition:transform .18s, border-color .18s}
+  .chip:hover{transform:translateY(-2px);border-color:var(--sage)}
 
   /* PROJETS */
-  .projects{background:var(--navy);color:#fff}
-  .projects .eyebrow{color:#7fb0e8}
-  .projects .eyebrow::before{background:#7fb0e8}
-  .projects .section-intro{color:#aebed2}
   .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .proj-card{background:#fff;color:var(--text);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease;cursor:pointer}
-  .proj-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.38)}
-  .proj-cover{aspect-ratio:16/10;background:#fff;display:grid;place-items:center;padding:22px;position:relative;border-bottom:1px solid var(--border)}
+  .proj-card{background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease;cursor:pointer}
+  .proj-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+  .proj-cover{aspect-ratio:16/10;background:var(--sand);display:grid;place-items:center;padding:22px;position:relative;border-bottom:1px solid var(--line)}
   .proj-cover img{max-width:100%;max-height:100%;object-fit:contain}
-  .proj-cover .media-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:linear-gradient(135deg,var(--navy-700),var(--navy-500));color:#fff}
-  .proj-cover .media-fallback svg{width:34px;height:34px;opacity:.85}
-  .proj-cover .media-fallback span{font-family:'JetBrains Mono',monospace;font-size:.76rem;opacity:.9}
-  .proj-badge{font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid #d4e3f5;padding:5px 12px;border-radius:999px;display:inline-block}
+  .proj-cover .media-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:var(--sage-soft);color:var(--sage-deep)}
+  .proj-cover .media-fallback svg{width:34px;height:34px;opacity:.8}
+  .proj-cover .media-fallback span{font-size:.76rem;opacity:.9}
+  .proj-badge{font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-deep);background:var(--sage-soft);border:1px solid #cfe0d6;padding:6px 13px;border-radius:999px;display:inline-block}
   .proj-body{padding:24px;display:flex;flex-direction:column;flex:1}
-  .proj-body .proj-badge{margin-bottom:14px;align-self:flex-start}
-  .proj-body h3{font-family:'Sora',sans-serif;font-size:1.18rem;letter-spacing:-.01em;margin-bottom:11px;line-height:1.28}
-  .proj-body .desc{color:var(--muted);font-size:.94rem;margin-bottom:18px}
-  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-  .tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;color:var(--navy-500);background:var(--surface);border:1px solid var(--border);padding:5px 10px;border-radius:7px}
-  .proj-link{margin-top:auto;align-self:flex-start;background:none;border:0;color:var(--accent);font-family:inherit;font-weight:600;font-size:.92rem;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:0}
+  .proj-body .proj-badge{margin-bottom:15px;align-self:flex-start}
+  .proj-body h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin-bottom:11px;line-height:1.28}
+  .proj-body .desc{color:var(--muted);font-size:.94rem;margin-bottom:20px}
+  .proj-link{margin-top:auto;align-self:flex-start;background:none;border:0;color:var(--sage-deep);font-family:inherit;font-weight:600;font-size:.92rem;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:0}
   .proj-link svg{width:15px;height:15px;transition:transform .2s}
   .proj-link:hover svg{transform:translateX(4px)}
 
-  /* MODAL DETAIL */
-  .modal-overlay{position:fixed;inset:0;background:rgba(10,18,32,.62);backdrop-filter:blur(4px);z-index:100;display:flex;align-items:flex-start;justify-content:center;padding:5vh 20px;opacity:0;visibility:hidden;transition:opacity .25s, visibility .25s;overflow-y:auto}
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(51,48,42,.55);backdrop-filter:blur(4px);z-index:100;display:flex;align-items:flex-start;justify-content:center;padding:5vh 20px;opacity:0;visibility:hidden;transition:opacity .25s, visibility .25s;overflow-y:auto}
   .modal-overlay.open{opacity:1;visibility:visible}
-  .modal{background:#fff;border-radius:20px;max-width:720px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);transform:translateY(20px);transition:transform .3s;position:relative;margin:auto}
+  .modal{background:var(--cream);border-radius:22px;max-width:680px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(40,36,26,.4);transform:translateY(20px);transition:transform .3s;position:relative;margin:auto}
   .modal-overlay.open .modal{transform:none}
-  .modal-close{position:absolute;top:16px;right:16px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--navy);cursor:pointer;display:grid;place-items:center;box-shadow:var(--shadow)}
-  .modal-close:hover{background:#fff}
+  .modal-close{position:absolute;top:16px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(251,247,239,.94);color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:var(--shadow)}
+  .modal-close:hover{background:var(--cream)}
   .modal-close svg{width:20px;height:20px}
-  .modal-main{aspect-ratio:16/10;background:var(--surface-2);display:grid;place-items:center;padding:18px;position:relative}
-  .modal-main img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
-  .modal-main .media-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--navy-500)}
+  .modal-main{aspect-ratio:16/10;background:var(--sand-deep);display:grid;place-items:center;padding:18px;position:relative}
+  .modal-main img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px}
+  .modal-main .media-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--sage-deep)}
   .modal-main .media-fallback svg{width:34px;height:34px}
-  .modal-main .media-fallback span{font-family:'JetBrains Mono',monospace;font-size:.76rem}
-  .modal-thumbs{display:flex;gap:10px;padding:14px 18px;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto}
-  .modal-thumb{flex:0 0 auto;width:76px;height:54px;border-radius:8px;overflow:hidden;border:2px solid transparent;cursor:pointer;background:var(--surface-2);padding:0}
-  .modal-thumb.active{border-color:var(--accent)}
+  .modal-main .media-fallback span{font-size:.76rem}
+  .modal-thumbs{display:flex;gap:10px;padding:14px 18px;background:var(--sand);border-bottom:1px solid var(--line);overflow-x:auto}
+  .modal-thumb{flex:0 0 auto;width:76px;height:54px;border-radius:9px;overflow:hidden;border:2px solid transparent;cursor:pointer;background:var(--sand-deep);padding:0}
+  .modal-thumb.active{border-color:var(--sage)}
   .modal-thumb img{width:100%;height:100%;object-fit:cover}
-  .modal-content{padding:28px 30px 34px}
+  .modal-content{padding:30px 32px 36px}
   .modal-content .proj-badge{margin-bottom:14px}
-  .modal-content h3{font-family:'Sora',sans-serif;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:8px;line-height:1.2}
-  .modal-meta{font-family:'JetBrains Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--accent);margin-bottom:18px}
-  .modal-content .tags{margin-bottom:20px}
-  .modal-desc p{color:var(--muted);font-size:.98rem;margin-bottom:14px}
-  .modal-main-video{width:100%;max-height:100%;display:block;border-radius:8px;background:#000}
-  .modal-thumb-video{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:var(--navy);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.08em;text-transform:uppercase}
+  .modal-content h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:8px;line-height:1.2}
+  .modal-meta{font-size:.78rem;letter-spacing:.04em;color:var(--sage-deep);margin-bottom:18px;font-weight:500}
+  .modal-desc p{color:var(--ink-soft);font-size:.98rem;margin-bottom:14px}
+  .modal-desc p:last-child{margin-bottom:0}
+  .modal-main-video{width:100%;max-height:100%;display:block;border-radius:10px;background:#000}
+  .modal-thumb-video{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:var(--sage);color:var(--cream);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase}
   .modal-thumb-video svg{width:18px;height:18px}
-  .pn-box{margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
-  .pn-box .pn-title{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:14px}
-  .pn-box .pn-title svg{width:20px;height:20px;color:var(--accent);flex-shrink:0}
-  .pn-list{list-style:none;display:flex;flex-direction:column}
-  .pn-list li{font-size:.92rem;color:var(--muted);padding:11px 0 11px 20px;position:relative;border-bottom:1px solid var(--border)}
-  .pn-list li:last-child{border-bottom:0;padding-bottom:0}
-  .pn-list li::before{content:"\25B9";position:absolute;left:0;color:var(--accent)}
-  .pn-list li strong{color:var(--text);font-weight:600}
 
   /* ALTERNANCE */
-  .alt-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
-  .alt-card-logo{display:inline-flex;align-items:center;gap:14px;margin-bottom:24px}
-  .alt-card-logo .lg{width:54px;height:54px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem}
-  .alt-card-logo .meta .org{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem}
-  .alt-card-logo .meta .loc{font-size:.86rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
-  .alt h3.role{font-family:'Sora',sans-serif;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:16px}
-  .alt p{color:var(--muted);margin-bottom:18px;font-size:1.02rem}
-  .alt .stack{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
-  .alt .stack .tag{background:#fff}
-  .alt-visual{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg);background:var(--surface-2);aspect-ratio:16/10;position:relative}
-  .alt-visual img{width:100%;height:100%;object-fit:cover;object-position:top}
-  .alt-visual .media-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--navy-500)}
-  .alt-visual .media-fallback svg{width:34px;height:34px}
-  .alt-visual .media-fallback span{font-family:'JetBrains Mono',monospace;font-size:.78rem}
-
-  /* CONTACT */
-  .contact{background:var(--surface);border-top:1px solid var(--border)}
-  .contact-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
-  .contact-info .lead{color:var(--muted);font-size:1.04rem;max-width:420px}
-  .info-list{display:flex;flex-direction:column;gap:16px;margin-top:32px}
-  .info-row{display:flex;align-items:center;gap:16px}
-  .info-row .ic{width:46px;height:46px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex-shrink:0}
-  .info-row .ic svg{width:20px;height:20px}
-  .info-row .txt .k{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-  .info-row .txt .v{font-weight:600;font-size:.96rem;word-break:break-word;transition:color .2s}
-  a.info-row:hover .txt .v{color:var(--accent)}
-  .contact-form{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow)}
-  .field{margin-bottom:18px}
-  .field label{display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-  .field input,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:.95rem;color:var(--text);background:var(--surface);transition:border-color .2s, box-shadow .2s, background .2s}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:#fff}
-  .field textarea{resize:vertical;min-height:130px}
-  .form-submit{width:100%;justify-content:center;margin-top:4px}
+  .alt-context{display:flex;align-items:center;gap:18px;background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow);margin-bottom:36px;flex-wrap:wrap}
+  .alt-context .lg{width:54px;height:54px;border-radius:14px;background:var(--sage);color:var(--cream);display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;flex-shrink:0}
+  .alt-context .org{font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;line-height:1.2}
+  .alt-context .loc{font-size:.86rem;color:var(--muted)}
+  .alt-context .ctx-meta{margin-left:auto;display:flex;gap:28px;flex-wrap:wrap}
+  .alt-context .ctx-meta .k{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:2px}
+  .alt-context .ctx-meta .v{font-weight:600;font-size:.9rem}
+  .missions{display:flex;flex-direction:column;gap:18px}
+  .mission{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:28px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .mission::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--sage)}
+  .mission-top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px}
+  .mission .idx{font-family:'Fraunces',serif;font-style:italic;font-weight:600;color:var(--sage);font-size:1.02rem}
+  .mission h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.26rem;letter-spacing:-.01em}
+  .mission .kind{font-size:.78rem;color:var(--muted);font-weight:500;margin-bottom:13px}
+  .mission p{color:var(--ink-soft);font-size:.99rem;margin:0;max-width:780px}
+  .alt-note{margin-top:28px;color:var(--muted);font-size:.96rem;max-width:700px}
+  .alt-note strong{color:var(--ink);font-weight:600}
 
   /* FOOTER */
-  footer{background:var(--navy);color:#aebed2;padding:36px 0}
-  .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.88rem}
-  .footer-inner .brand-f{font-family:'Sora',sans-serif;color:#fff;font-weight:700}
+  footer{background:var(--sage-deep);color:#d6e2da;padding:40px 0;position:relative;z-index:1}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.9rem}
+  .footer-inner .brand-f{font-family:'Fraunces',serif;color:var(--cream);font-weight:600;font-size:1.05rem}
+  .footer-inner a{color:#d6e2da;transition:color .2s}
+  .footer-inner a:hover{color:var(--cream)}
 
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease, transform .55s ease}
   .reveal.in{opacity:1;transform:none}
 
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:48px}
-    .hero-photo{justify-self:start;order:-1}
-    .about-grid,.alt-grid,.contact-layout{grid-template-columns:1fr;gap:40px}
+  @media (max-width:820px){
+    .intro-grid{grid-template-columns:1fr;gap:30px}
+    .tiles{grid-template-columns:1fr}
     .comp-grid,.proj-grid{grid-template-columns:1fr}
-    .nav-links{position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;gap:0;padding:8px 28px 18px;box-shadow:var(--shadow);display:none}
+    .alt-context .ctx-meta{margin-left:0;width:100%;margin-top:4px}
+    .nav-links{position:absolute;top:74px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:0;padding:8px 30px 18px;box-shadow:var(--shadow);display:none}
     .nav-links.open{display:flex}
-    .nav-links a{padding:13px 0;width:100%;border-bottom:1px solid var(--surface-2)}
+    .nav-links a{padding:13px 0;width:100%;border-bottom:1px solid var(--sand-deep)}
     .nav-links a::after{display:none}
     .hamburger{display:block}
     .nav-cta .btn-ghost{display:none}
-    section{padding:72px 0}
   }
   @media (max-width:560px){
     .wrap{padding:0 20px}
-    .hero h1{font-size:2.1rem}
-    .photo-frame{width:100%;max-width:300px;height:320px}
-    .hero-meta{gap:22px}
     .modal-content{padding:24px 22px 30px}
+    .mission{padding:24px 24px}
+    .footer-inner{flex-direction:column;align-items:flex-start}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none}
   }
-  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+  :focus-visible{outline:3px solid var(--sage);outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
 
+<!-- VAGUES DOUCES EN FOND -->
+<div class="bg-waves" aria-hidden="true">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g class="wave-drift">
+      <path d="M-120 120 C 180 60, 360 180, 660 120 S 1140 60, 1560 120"/>
+      <path d="M-120 250 C 200 190, 380 310, 680 250 S 1160 190, 1560 250"/>
+      <path d="M-120 390 C 160 330, 380 450, 700 390 S 1180 330, 1560 390"/>
+      <path d="M-120 530 C 200 470, 400 590, 700 530 S 1180 470, 1560 530"/>
+      <path d="M-120 670 C 180 610, 360 730, 660 670 S 1160 610, 1560 670"/>
+      <path d="M-120 810 C 200 750, 400 870, 700 810 S 1180 750, 1560 810"/>
+    </g>
+  </svg>
+</div>
+
 <!-- NAVBAR -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#hero" class="brand"><span class="mark">SL</span> Soufiane Lakhliy</a>
+    <a href="#accueil" class="brand"><span class="mark">RS</span> Rihab Sfayty</a>
     <nav>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">À propos</a></li>
         <li><a href="#competences">Compétences</a></li>
         <li><a href="#projets">Projets</a></li>
+        <li><a href="#logiciels">Logiciels</a></li>
         <li><a href="#alternance">Alternance</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-ghost" href="Soufiane_Lakhliy_CV.pdf" download="Soufiane_Lakhliy_CV.pdf">
+      <a class="btn btn-ghost" href="CV_Rihab_Sfayty.pdf" download="CV_Rihab_Sfayty.pdf">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Télécharger mon CV
+        Mon CV
       </a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -251,144 +254,218 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-text reveal">
-      <span class="hero-status">Alternant Data Analyst</span>
-      <h1>Soufiane Lakhliy<br><span class="accent">Data Analyst</span></h1>
-      <div class="hero-role">Étudiant en BUT Sciences des Données — IUT de Vannes</div>
-      <p class="lead">Je transforme des données complexes en outils de décision clairs, fiables et faciles à lire. De la collecte au tableau de bord interactif, j'accompagne chaque étape de la chaîne de traitement de l'information.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projets">Voir mes projets
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="btn btn-ghost" href="Soufiane_Lakhliy_CV.pdf" download="Soufiane_Lakhliy_CV.pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Télécharger mon CV
-        </a>
-      </div>
-      <div class="hero-meta">
-        <div class="item"><span class="k">Formation</span><span class="v">BUT Sciences des Données</span></div>
-        <div class="item"><span class="k">Alternance</span><span class="v">GIP SESAN — Paris</span></div>
-        <div class="item"><span class="k">Domaines</span><span class="v">Analyse · Dataviz · R / Python</span></div>
-      </div>
-    </div>
-    <div class="hero-photo reveal">
-      <div class="photo-frame">
-        <img src="assets/images/photo.jpg" alt="Photo de Soufiane Lakhliy" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='photo.jpg';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
-        <div class="media-fallback" style="display:none;">
-          <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-          <span>assets/images/photo.jpg</span>
+<!-- ============ ACCUEIL ============ -->
+<div class="view active" id="view-accueil">
+  <section class="intro">
+    <div class="wrap intro-grid">
+      <div class="intro-photo reveal">
+        <div class="photo-frame">
+          <img src="assets/images/photo.jpg" alt="Photo de Rihab Sfayty" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='photo.jpg';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+          <div class="media-fallback" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+            <span>assets/images/photo.jpg</span>
+          </div>
         </div>
       </div>
-      <div class="photo-badge">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></span>
-        <span><span class="t">Spécialité</span><br><span class="s">Data &amp; Décisionnel</span></span>
+      <div class="intro-text reveal">
+        <h1>Rihab Sfayty</h1>
+        <div class="role">Biostatisticienne alternante · BUT Sciences des Données</div>
+        <p>Je suis actuellement étudiante en 2ème année de <strong>BUT Sciences des Données</strong> à l'IUT de Vannes, parcours <strong>Exploration et Modélisation Statistique (EMS), option Mathématiques</strong>.</p>
+        <p>Passionnée par l'analyse de données, je m'intéresse particulièrement à l'application des méthodes statistiques dans des domaines variés, notamment <strong>économique, social et médical</strong>.</p>
+        <p>Je développe des compétences en <strong>modélisation statistique, traitement de données et analyse décisionnelle</strong>, à l'aide d'outils comme R, Python et SQL.</p>
+        <p>Pour me contacter, vous pouvez m'écrire à : <a class="mail" href="mailto:Rihabsf045@gmail.com">Rihabsf045@gmail.com</a></p>
+        <div class="intro-actions">
+          <a class="btn btn-primary" href="CV_Rihab_Sfayty.pdf" download="CV_Rihab_Sfayty.pdf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Télécharger mon CV
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- À PROPOS -->
-<section class="about" id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <span class="eyebrow">À propos</span>
-        <h2 class="section-title">Un parcours orienté donnée et décision</h2>
-        <p>Étudiant en <strong>BUT Sciences des Données</strong> à l'IUT de Vannes (Université Bretagne Sud), je me forme aux métiers de l'analyse et de la valorisation de la donnée : statistique, modélisation, traitement, développement décisionnel et restitution.</p>
-        <p>En parallèle, je réalise une <strong>alternance de Data Analyst au GIP SESAN</strong> à Paris, au sein du département Traitement de l'Information. J'y développe un tableau de bord interactif pour le suivi des indicateurs d'une plateforme de coordination en santé en Île-de-France.</p>
-        <p>Au fil de mes projets et de mon alternance, j'ai pris goût à un travail à la fois <strong>technique et lisible</strong> : structurer des données, les analyser rigoureusement, puis les présenter de façon claire pour aider à la décision.</p>
+  <section class="tiles-wrap">
+    <div class="wrap">
+      <div class="tiles">
+        <a class="tile reveal" href="#competences">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg></span>
+          <h3>Compétences</h3>
+          <p>Mes compétences en statistique, analyse de données et programmation.</p>
+          <span class="go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="tile reveal" href="#projets">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 6-7"/></svg></span>
+          <h3>Projets</h3>
+          <p>Les projets académiques (SAÉ) que j'ai menés au sein de l'IUT.</p>
+          <span class="go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="tile reveal" href="#logiciels">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+          <h3>Logiciels</h3>
+          <p>Les outils et logiciels que j'utilise pour traiter et analyser les données.</p>
+          <span class="go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="tile reveal" href="#alternance">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v.01M9 12v.01M9 15v.01"/></svg></span>
+          <h3>Alternance</h3>
+          <p>Mes missions de biostatisticienne au CHU de Nantes.</p>
+          <span class="go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
       </div>
-      <aside class="next-card reveal">
-        <span class="eyebrow">Perspectives</span>
-        <h3>Ce que je veux renforcer ensuite</h3>
-        <ul class="next-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Approfondir le machine learning et la modélisation prédictive.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Consolider mes compétences en ingénierie de données (pipelines, bases de données).</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Renforcer la conception décisionnelle et la dataviz avancée au service des utilisateurs.</li>
-        </ul>
-      </aside>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- COMPÉTENCES -->
-<section id="competences">
-  <div class="wrap">
-    <div class="reveal">
+<!-- ============ COMPÉTENCES ============ -->
+<div class="view" id="view-competences">
+  <section class="page">
+    <div class="wrap">
+      <a class="back-link" href="#accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Accueil</a>
       <span class="eyebrow">Compétences · Programme National</span>
-      <h2 class="section-title">Les compétences du BUT que je développe</h2>
-      <p class="section-intro">Mes projets (SAÉ) et mon alternance s'appuient sur les cinq blocs de compétences du référentiel BUT Sciences des Données.</p>
+      <h2 class="section-title">Les compétences que je développe</h2>
+      <p class="section-intro">Mes projets et mon alternance s'appuient sur les cinq blocs de compétences du référentiel BUT Sciences des Données.</p>
+      <div class="comp-grid">
+        <div class="comp-card"><span class="num">01</span><span class="code">VCOD</span><h3>Développer un outil décisionnel</h3><p>Concevoir et construire des applications et tableaux de bord qui aident à la prise de décision.</p></div>
+        <div class="comp-card"><span class="num">02</span><span class="code">EMS</span><h3>Modéliser dans un cadre statistique</h3><p>Recueillir, échantillonner et modéliser des données selon une démarche statistique rigoureuse.</p></div>
+        <div class="comp-card"><span class="num">03</span><span class="code">Traiter</span><h3>Traiter des données à des fins décisionnelles</h3><p>Nettoyer, transformer et structurer les données pour les rendre exploitables.</p></div>
+        <div class="comp-card"><span class="num">04</span><span class="code">Analyser</span><h3>Analyser statistiquement les données</h3><p>Explorer, décrire et interpréter les données pour en extraire des résultats fiables.</p></div>
+        <div class="comp-card"><span class="num">05</span><span class="code">Valoriser</span><h3>Valoriser une production en contexte pro</h3><p>Restituer et communiquer les résultats de façon claire et adaptée aux destinataires.</p></div>
+      </div>
     </div>
-    <div class="comp-grid">
-      <div class="comp-card reveal"><span class="num">01</span><span class="code">VCOD</span><h3>Développer un outil décisionnel</h3><p>Concevoir et construire des applications et tableaux de bord qui aident à la prise de décision.</p></div>
-      <div class="comp-card reveal"><span class="num">02</span><span class="code">EMS</span><h3>Modéliser dans un cadre statistique</h3><p>Recueillir, échantillonner et modéliser des données selon une démarche statistique rigoureuse.</p></div>
-      <div class="comp-card reveal"><span class="num">03</span><span class="code">TRAITER</span><h3>Traiter des données à des fins décisionnelles</h3><p>Nettoyer, transformer et structurer les données pour les rendre exploitables.</p></div>
-      <div class="comp-card reveal"><span class="num">04</span><span class="code">ANALYSER</span><h3>Analyser statistiquement les données</h3><p>Explorer, décrire et interpréter les données pour en extraire des résultats fiables.</p></div>
-      <div class="comp-card reveal"><span class="num">05</span><span class="code">VALORISER</span><h3>Valoriser une production en contexte pro</h3><p>Restituer et communiquer les résultats de façon claire et adaptée aux destinataires.</p></div>
+  </section>
+</div>
+
+<!-- ============ PROJETS ============ -->
+<div class="view" id="view-projets">
+  <section class="page">
+    <div class="wrap">
+      <a class="back-link" href="#accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Accueil</a>
+      <span class="eyebrow">Projets · IUT</span>
+      <h2 class="section-title">Projets menés à l'IUT</h2>
+      <p class="section-intro">Une sélection de projets (SAÉ) réalisés pendant ma formation. Cliquez sur une carte pour voir le détail.</p>
+      <div class="proj-grid">
+
+        <article class="proj-card">
+          <div class="proj-cover">
+            <img src="assets/images/aphp_logo.png" alt="AP-HP" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>aphp_logo.png</span></div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">Data · Santé</span>
+            <h3>Analyse de données médicales — AP-HP</h3>
+            <p class="desc">Traitement de données patients, calcul automatisé de scores cliniques en Python et génération de fiches PDF personnalisées.</p>
+            <button class="proj-link" data-modal="modal-aphp">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-cover">
+            <img src="assets/images/cpie_logo.png" alt="CPIE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg><span>cpie_logo.png</span></div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">Terrain</span>
+            <h3>Étude statistique environnementale — CPIE</h3>
+            <p class="desc">Conception d'un questionnaire et analyse statistique pour le CPIE de Belle-Île-en-Mer.</p>
+            <button class="proj-link" data-modal="modal-cpie">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-cover">
+            <img src="assets/images/customer.png" alt="Analyse multivariée" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M7 14l3-3 4 4 6-7"/></svg><span>customer.png</span></div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">Analyse</span>
+            <h3>Analyse multivariée — Segmentation</h3>
+            <p class="desc">Analyse en Composantes Principales et reporting d'une analyse multivariée sous R.</p>
+            <button class="proj-link" data-modal="modal-acp">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- PROJETS -->
-<section class="projects" id="projets">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow">Projets · SAÉ</span>
-      <h2 class="section-title">Mes projets à l'IUT</h2>
-      <p class="section-intro">Une sélection de projets menés pendant ma formation. Cliquez sur « Voir le détail » pour parcourir les visuels et la description complète.</p>
+<!-- ============ LOGICIELS ============ -->
+<div class="view" id="view-logiciels">
+  <section class="page">
+    <div class="wrap">
+      <a class="back-link" href="#accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Accueil</a>
+      <span class="eyebrow">Outils &amp; Logiciels</span>
+      <h2 class="section-title">Les outils que j'utilise</h2>
+      <p class="section-intro">Les langages, logiciels et outils que je mobilise pour traiter, analyser et restituer les données.</p>
+      <div class="skills">
+        <div class="skill-group">
+          <h4>Langages de programmation</h4>
+          <div class="chips"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">VBA</span></div>
+        </div>
+        <div class="skill-group">
+          <h4>Logiciels statistiques</h4>
+          <div class="chips"><span class="chip">RStudio</span><span class="chip">SAS</span><span class="chip">Le Sphinx</span><span class="chip">Spyder</span><span class="chip">Jupyter Notebook</span><span class="chip">Excel</span></div>
+        </div>
+        <div class="skill-group">
+          <h4>Bases de données</h4>
+          <div class="chips"><span class="chip">Oracle</span><span class="chip">Oracle SQL Developer</span><span class="chip">MySQL</span><span class="chip">Access</span><span class="chip">DBeaver</span></div>
+        </div>
+        <div class="skill-group">
+          <h4>Business Intelligence &amp; Reporting</h4>
+          <div class="chips"><span class="chip">Power BI</span><span class="chip">R Shiny</span><span class="chip">Reporting automatisé</span><span class="chip">QGIS</span><span class="chip">Talend</span></div>
+        </div>
+      </div>
     </div>
-    <div class="proj-grid">
+  </section>
+</div>
 
-      <article class="proj-card reveal">
-        <div class="proj-cover">
-          <img src="assets/images/aphp_logo.png" alt="AP-HP" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="media-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>aphp_logo.png</span></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-badge">Data · Santé</span>
-          <h3>Analyse de données médicales — AP-HP</h3>
-          <p class="desc">Traitement de données patients, calcul automatisé de scores cliniques en Python et génération de fiches PDF personnalisées.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">PDF</span><span class="tag">Santé</span></div>
-          <button class="proj-link" data-modal="modal-aphp">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        </div>
-      </article>
+<!-- ============ ALTERNANCE ============ -->
+<div class="view" id="view-alternance">
+  <section class="page">
+    <div class="wrap">
+      <a class="back-link" href="#accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Accueil</a>
+      <span class="eyebrow">Alternance</span>
+      <h2 class="section-title">Mon alternance au CHU de Nantes</h2>
+      <p class="section-intro">Biostatisticienne à la Plateforme de Méthodologie et Biostatistique (PMB), j'interviens sur des études cliniques réelles. Voici les projets que j'y ai menés.</p>
 
-      <article class="proj-card reveal">
-        <div class="proj-cover">
-          <img src="assets/images/cpie_logo.png" alt="CPIE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="media-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg><span>cpie_logo.png</span></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-badge">Terrain</span>
-          <h3>Étude statistique environnementale — CPIE</h3>
-          <p class="desc">Conception d'un questionnaire et analyse statistique pour le CPIE de Belle-Île-en-Mer.</p>
-          <div class="tags"><span class="tag">Sphinx</span><span class="tag">Excel</span><span class="tag">Stats</span><span class="tag">Enquête</span></div>
-          <button class="proj-link" data-modal="modal-cpie">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        </div>
-      </article>
+      <div class="alt-context">
+        <span class="lg">CHU</span>
+        <span><span class="org">CHU de Nantes — PMB</span><br><span class="loc">Plateforme de Méthodologie et Biostatistique</span></span>
+        <span class="ctx-meta">
+          <span><span class="k">Période</span><span class="v">Oct. 2025 – Juin 2026</span></span>
+          <span><span class="k">Outils</span><span class="v">R · SAS 9.4</span></span>
+        </span>
+      </div>
 
-      <article class="proj-card reveal">
-        <div class="proj-cover">
-          <img src="assets/images/customer.png" alt="Analyse multivariée" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="media-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M7 14l3-3 4 4 6-7"/></svg><span>customer.png</span></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-badge">Analyse</span>
-          <h3>Analyse multivariée — Segmentation</h3>
-          <p class="desc">Analyse en Composantes Principales et reporting d'une analyse multivariée sous R.</p>
-          <div class="tags"><span class="tag">R</span><span class="tag">ACP</span><span class="tag">Stats</span><span class="tag">Visualisation</span></div>
-          <button class="proj-link" data-modal="modal-acp">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        </div>
-      </article>
+      <div class="missions">
+        <article class="mission">
+          <div class="mission-top"><span class="idx">01</span><h3>POPAVISIO</h3></div>
+          <div class="kind">Étude de satisfaction · multicentrique · sous R</div>
+          <p>Première analyse menée de bout en bout : revue des données, définition de la population d'analyse (N = 273), choix et application des tests adaptés, puis rédaction du rapport et restitution aux équipes médicales.</p>
+        </article>
+        <article class="mission">
+          <div class="mission-top"><span class="idx">02</span><h3>IMMUNHEMAC</h3></div>
+          <div class="kind">Étude biologique · longitudinale · sous R</div>
+          <p>Gestion des données manquantes sur 89 variables biologiques : traitement des valeurs hors limites de détection, double base et analyse de sensibilité pour mesurer l'impact des choix d'imputation sur les conclusions.</p>
+        </article>
+        <article class="mission">
+          <div class="mission-top"><span class="idx">03</span><h3>Thèse en psychiatrie</h3></div>
+          <div class="kind">Analyse statistique complète · sous SAS 9.4</div>
+          <p>Montée en compétences sur SAS : mise en correspondance des champs d'un logiciel de régulation médicale, revue des données et production des tableaux descriptifs au moyen de macros validées.</p>
+        </article>
+        <article class="mission">
+          <div class="mission-top"><span class="idx">04</span><h3>Phase de test EasyMedStat</h3></div>
+          <div class="kind">Évaluation d'un logiciel · mission transversale</div>
+          <p>Conception d'un questionnaire de satisfaction, analyse des retours et accompagnement d'utilisateurs non statisticiens, au service d'une décision sur le déploiement de l'outil.</p>
+        </article>
+      </div>
 
+      <p class="alt-note">Ces missions mettent directement en pratique les compétences du BUT Sciences des Données : <strong>traiter</strong>, <strong>analyser</strong> et <strong>valoriser</strong> des données, cette fois confrontées à des données de santé réelles.</p>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- MODAL AP-HP -->
+<!-- ===== MODALES PROJETS ===== -->
 <div class="modal-overlay" id="modal-aphp" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-label="Détail du projet AP-HP">
     <button class="modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
@@ -407,24 +484,14 @@
       <span class="proj-badge">Data · Santé</span>
       <h3>Analyse de données médicales — AP-HP</h3>
       <div class="modal-meta">Projet de groupe · BUT Sciences des Données</div>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">PDF</span><span class="tag">Santé</span></div>
       <div class="modal-desc">
         <p>Réception des tableaux Excel patients et nettoyage initial : identification des valeurs aberrantes, normalisation des formats et préparation du jeu de données pour l'analyse statistique.</p>
-        <p>Calcul automatisé de scores cliniques en Python, puis génération de fiches patient personnalisées au format PDF, avec des visualisations lisibles et une interprétation simple des résultats pour les professionnels de santé.</p>
-      </div>
-      <div class="pn-box">
-        <div class="pn-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg> Compétences Programme National</div>
-        <ul class="pn-list">
-          <li><strong>Traiter des données à des fins décisionnelles</strong> — Nettoyage et transformation des données patients avec Python / Pandas.</li>
-          <li><strong>Développer un outil décisionnel</strong> — Automatisation du calcul des scores cliniques.</li>
-          <li><strong>Valoriser une production en contexte professionnel</strong> — Génération de fiches PDF claires pour les soignants.</li>
-        </ul>
+        <p>Calcul automatisé de scores cliniques en Python, puis génération de fiches patient personnalisées au format PDF, avec des visualisations lisibles pour les professionnels de santé.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MODAL CPIE -->
 <div class="modal-overlay" id="modal-cpie" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-label="Détail du projet CPIE">
     <button class="modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
@@ -442,24 +509,14 @@
       <span class="proj-badge">Terrain</span>
       <h3>Étude statistique environnementale — CPIE</h3>
       <div class="modal-meta">Enquête de terrain · BUT Sciences des Données</div>
-      <div class="tags"><span class="tag">Sphinx</span><span class="tag">Excel</span><span class="tag">Stats</span><span class="tag">Enquête</span></div>
       <div class="modal-desc">
         <p>Conception complète d'une enquête pour le CPIE de Belle-Île-en-Mer : définition des objectifs, rédaction du questionnaire (notoriété, communication, engagement du public) et collecte des réponses via la plateforme Sphinx.</p>
         <p>Analyse statistique des résultats et formulation de recommandations concrètes pour améliorer la visibilité et la communication de l'association.</p>
-      </div>
-      <div class="pn-box">
-        <div class="pn-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg> Compétences Programme National</div>
-        <ul class="pn-list">
-          <li><strong>Modéliser les données dans un cadre statistique</strong> — Conception du questionnaire et plan de recueil des réponses.</li>
-          <li><strong>Traiter des données à des fins décisionnelles</strong> — Mise en forme et nettoyage des réponses de l'enquête.</li>
-          <li><strong>Valoriser une production en contexte professionnel</strong> — Synthèse et recommandations pour l'association.</li>
-        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MODAL ACP -->
 <div class="modal-overlay" id="modal-acp" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-label="Détail du projet analyse multivariée">
     <button class="modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
@@ -482,109 +539,19 @@
       <span class="proj-badge">Analyse</span>
       <h3>Analyse multivariée — Segmentation</h3>
       <div class="modal-meta">Reporting d'analyse multivariée · BUT Sciences des Données</div>
-      <div class="tags"><span class="tag">R</span><span class="tag">ACP</span><span class="tag">Stats</span><span class="tag">Visualisation</span></div>
       <div class="modal-desc">
         <p>Analyse en Composantes Principales sur un jeu de données réel : statistiques descriptives, matrice des corrélations, calcul de l'inertie, puis réalisation de l'ACP sous R et interprétation des axes et du plan factoriel.</p>
         <p>Le projet a donné lieu à un reporting d'analyse multivariée présenté en soutenance, à retrouver dans la galerie ci-dessus (onglet « Vidéo »).</p>
-      </div>
-      <div class="pn-box">
-        <div class="pn-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg> Compétences Programme National</div>
-        <ul class="pn-list">
-          <li><strong>Analyser statistiquement les données</strong> — Analyse en Composantes Principales et étude des corrélations.</li>
-          <li><strong>Modéliser les données dans un cadre statistique</strong> — Interprétation des axes et du plan factoriel sous R.</li>
-          <li><strong>Valoriser une production en contexte professionnel</strong> — Reporting d'analyse multivariée présenté en soutenance.</li>
-        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ALTERNANCE -->
-<section class="alt" id="alternance">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow">Alternance</span>
-      <h2 class="section-title">Data Analyst au GIP SESAN</h2>
-    </div>
-    <div class="alt-grid">
-      <div class="alt-text reveal">
-        <div class="alt-card-logo">
-          <span class="lg">S</span>
-          <span class="meta"><span class="org">GIP SESAN</span><br><span class="loc">Paris · Traitement de l'Information</span></span>
-        </div>
-        <h3 class="role">Développement d'un tableau de bord interactif</h3>
-        <p>Au sein du GIP SESAN, j'interviens sur le développement front-end d'un tableau de bord destiné au suivi des indicateurs d'usage d'une plateforme régionale de coordination en santé, à destination de l'ARS Île-de-France et des équipes internes.</p>
-        <p>Mon travail couvre la conception de l'interface, la mise en place des filtres dynamiques, des graphiques interactifs et des cartes, ainsi que la restitution claire des indicateurs pour les utilisateurs métiers.</p>
-        <p>Cette expérience m'a permis de monter en compétence sur le développement d'applications web décisionnelles, la manipulation de bases de données et le travail en équipe projet dans un environnement professionnel exigeant.</p>
-        <div class="stack"><span class="tag">R Shiny</span><span class="tag">golem</span><span class="tag">PostgreSQL</span><span class="tag">echarts4r</span><span class="tag">leaflet</span><span class="tag">Figma</span><span class="tag">GitLab</span></div>
-      </div>
-      <div class="alt-visual reveal">
-        <img src="assets/images/dataviz_projet_alternance.png" alt="Aperçu du tableau de bord" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="media-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>assets/images/dataviz_projet_alternance.png</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="contact-layout">
-      <div class="contact-info reveal">
-        <span class="eyebrow">Contact</span>
-        <h2 class="section-title">Contactez-moi</h2>
-        <p class="lead">Une question, un échange ou une collaboration ? Écrivez-moi directement, je vous répondrai rapidement.</p>
-        <div class="info-list">
-          <a class="info-row" href="mailto:lakhliy132@gmail.com">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span>
-            <span class="txt"><span class="v">lakhliy132@gmail.com</span></span>
-          </a>
-          <div class="info-row">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.4-7-11a7 7 0 0 1 14 0c0 5.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-            <span class="txt"><span class="v">Vannes · Paris</span></span>
-          </div>
-          <a class="info-row" href="https://www.linkedin.com/in/soufiane-lakhliy-6002b7262" target="_blank" rel="noopener">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.34 18V9.99H5.67V18zM7 8.82a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1M18.34 18v-4.39c0-2.34-1.25-3.43-2.92-3.43a2.52 2.52 0 0 0-2.28 1.25V9.99h-2.67V18h2.67v-4.25c0-1.12.21-2.2 1.6-2.2s1.39 1.28 1.39 2.27V18z"/></svg></span>
-            <span class="txt"><span class="v">in/soufiane-lakhliy</span></span>
-          </a>
-          <a class="info-row" href="https://github.com/lakhliy132-sudo" target="_blank" rel="noopener">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></span>
-            <span class="txt"><span class="v">lakhliy132-sudo</span></span>
-          </a>
-        </div>
-      </div>
-
-      <form class="contact-form reveal" id="contactForm">
-        <div class="field">
-          <label for="cf-nom">Nom</label>
-          <input type="text" id="cf-nom" name="nom" placeholder="Votre nom" required>
-        </div>
-        <div class="field">
-          <label for="cf-email">Email</label>
-          <input type="email" id="cf-email" name="email" placeholder="votre@email.com" required>
-        </div>
-        <div class="field">
-          <label for="cf-sujet">Sujet</label>
-          <input type="text" id="cf-sujet" name="sujet" placeholder="Sujet de votre message">
-        </div>
-        <div class="field">
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" placeholder="Votre message..." required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary form-submit">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          Envoyer
-        </button>
-      </form>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="wrap footer-inner">
-    <span><span class="brand-f">Soufiane Lakhliy</span> · Data Analyst</span>
-    <span>&copy; <span id="year"></span> — Portfolio BUT Sciences des Données</span>
+    <span class="brand-f">Rihab Sfayty</span>
+    <span><a href="mailto:Rihabsf045@gmail.com">Rihabsf045@gmail.com</a> · &copy; <span id="year"></span> Portfolio BUT Sciences des Données</span>
   </div>
 </footer>
 
@@ -593,13 +560,35 @@
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 8));
 
-  // Mobile menu
+  // Menu mobile
   const burger = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
   burger.addEventListener('click', () => links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
-  // Galeries (changer la photo / vidéo dans le détail)
+  // ===== Routeur de pages (bulles cliquables) =====
+  const valid = ['accueil','competences','projets','logiciels','alternance'];
+  function showView(){
+    let hash = location.hash.replace('#','');
+    if(!valid.includes(hash)) hash = 'accueil';
+    document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-'+hash));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+hash));
+    window.scrollTo(0,0);
+    // relance des animations d'apparition
+    const active = document.getElementById('view-'+hash);
+    if(active){ active.querySelectorAll('.reveal').forEach(el => { el.classList.remove('in'); io.observe(el); }); }
+  }
+
+  // Apparition au scroll / changement de page
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  window.addEventListener('hashchange', showView);
+  showView();
+
+  // ===== Modales projets =====
   document.querySelectorAll('.modal-gallery').forEach(g => {
     const main = g.querySelector('.modal-main img');
     const fb = g.querySelector('.modal-main .media-fallback');
@@ -610,10 +599,7 @@
       main.onerror = () => { main.style.display='none'; if(fb) fb.style.display='flex'; };
       main.src = src; main.alt = alt;
     }
-    function showVideo(){
-      main.style.display = 'none'; if(fb) fb.style.display = 'none';
-      if(video) video.style.display = 'block';
-    }
+    function showVideo(){ main.style.display='none'; if(fb) fb.style.display='none'; if(video) video.style.display='block'; }
     g.querySelectorAll('.modal-thumb').forEach(t => {
       t.addEventListener('click', () => {
         if(t.dataset.type === 'video'){ showVideo(); }
@@ -623,54 +609,30 @@
       });
     });
   });
-
-  // Modales (ouvrir / fermer le détail)
   let lastFocused = null;
   function openModal(id, focusEl){
-    const m = document.getElementById(id);
-    if (!m) return;
-    lastFocused = focusEl;
-    m.classList.add('open');
-    m.setAttribute('aria-hidden', 'false');
+    const m = document.getElementById(id); if(!m) return;
+    lastFocused = focusEl; m.classList.add('open'); m.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
-    const c = m.querySelector('.modal-close'); if (c) c.focus();
+    const c = m.querySelector('.modal-close'); if(c) c.focus();
   }
   document.querySelectorAll('.proj-card').forEach(card => {
-    const trigger = card.querySelector('[data-modal]');
-    if (!trigger) return;
+    const trigger = card.querySelector('[data-modal]'); if(!trigger) return;
     card.addEventListener('click', () => openModal(trigger.dataset.modal, card));
   });
   function closeModal(m){
-    m.classList.remove('open');
-    m.setAttribute('aria-hidden', 'true');
+    m.classList.remove('open'); m.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
-    const v = m.querySelector('video'); if (v) v.pause();
-    if (lastFocused) lastFocused.focus();
+    const v = m.querySelector('video'); if(v) v.pause();
+    if(lastFocused) lastFocused.focus();
   }
   document.querySelectorAll('.modal-overlay').forEach(m => {
-    m.addEventListener('click', e => { if (e.target === m) closeModal(m); });
+    m.addEventListener('click', e => { if(e.target === m) closeModal(m); });
     m.querySelector('.modal-close').addEventListener('click', () => closeModal(m));
   });
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape'){ const open = document.querySelector('.modal-overlay.open'); if (open) closeModal(open); }
+    if(e.key === 'Escape'){ const open = document.querySelector('.modal-overlay.open'); if(open) closeModal(open); }
   });
-
-  // Formulaire de contact -> ouvre le client mail pré-rempli
-  document.getElementById('contactForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const nom = document.getElementById('cf-nom').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const sujet = document.getElementById('cf-sujet').value.trim() || 'Contact depuis le portfolio';
-    const message = document.getElementById('cf-message').value.trim();
-    const corps = 'Nom : ' + nom + '\nEmail : ' + email + '\n\n' + message;
-    window.location.href = 'mailto:lakhliy132@gmail.com?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
-  });
-
-  // Reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
