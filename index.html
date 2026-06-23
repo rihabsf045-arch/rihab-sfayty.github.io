@@ -72,6 +72,7 @@
   /* ACCUEIL — présentation */
   .intro{padding:64px 0 30px}
   .intro-grid{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start}
+  .intro-single{max-width:760px}
   .intro-photo{position:relative}
   .photo-frame{width:200px;height:248px;border-radius:100px 100px 22px 22px;overflow:hidden;border:6px solid var(--cream);background:var(--sand-deep);box-shadow:var(--shadow-lg)}
   .photo-frame img{width:100%;height:100%;object-fit:cover}
@@ -257,20 +258,12 @@
 <!-- ============ ACCUEIL ============ -->
 <div class="view active" id="view-accueil">
   <section class="intro">
-    <div class="wrap intro-grid">
-      <div class="intro-photo reveal">
-        <div class="photo-frame">
-          <img src="assets/images/photo.jpg" alt="Photo de Rihab Sfayty" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='photo.jpg';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
-          <div class="media-fallback" style="display:none;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-            <span>assets/images/photo.jpg</span>
-          </div>
-        </div>
-      </div>
+    <div class="wrap intro-single">
       <div class="intro-text reveal">
         <h1>Rihab Sfayty</h1>
         <div class="role">Biostatisticienne alternante · BUT Sciences des Données</div>
         <p>Je suis actuellement étudiante en 2ème année de <strong>BUT Sciences des Données</strong> à l'IUT de Vannes, parcours <strong>Exploration et Modélisation Statistique (EMS), option Mathématiques</strong>.</p>
+        <p>Je réalise actuellement une <strong>alternance de biostatisticienne au CHU de Nantes</strong>, au sein de la Plateforme de Méthodologie et Biostatistique (PMB), où je contribue à des études cliniques réelles — de la revue des données jusqu'à l'analyse statistique sous R et SAS et la restitution des résultats aux équipes médicales.</p>
         <p>Passionnée par l'analyse de données, je m'intéresse particulièrement à l'application des méthodes statistiques dans des domaines variés, notamment <strong>économique, social et médical</strong>.</p>
         <p>Je développe des compétences en <strong>modélisation statistique, traitement de données et analyse décisionnelle</strong>, à l'aide d'outils comme R, Python et SQL.</p>
         <p>Pour me contacter, vous pouvez m'écrire à : <a class="mail" href="mailto:Rihabsf045@gmail.com">Rihabsf045@gmail.com</a></p>
@@ -325,11 +318,10 @@
       <h2 class="section-title">Les compétences que je développe</h2>
       <p class="section-intro">Mes projets et mon alternance s'appuient sur les cinq blocs de compétences du référentiel BUT Sciences des Données.</p>
       <div class="comp-grid">
-        <div class="comp-card"><span class="num">01</span><span class="code">VCOD</span><h3>Développer un outil décisionnel</h3><p>Concevoir et construire des applications et tableaux de bord qui aident à la prise de décision.</p></div>
-        <div class="comp-card"><span class="num">02</span><span class="code">EMS</span><h3>Modéliser dans un cadre statistique</h3><p>Recueillir, échantillonner et modéliser des données selon une démarche statistique rigoureuse.</p></div>
-        <div class="comp-card"><span class="num">03</span><span class="code">Traiter</span><h3>Traiter des données à des fins décisionnelles</h3><p>Nettoyer, transformer et structurer les données pour les rendre exploitables.</p></div>
-        <div class="comp-card"><span class="num">04</span><span class="code">Analyser</span><h3>Analyser statistiquement les données</h3><p>Explorer, décrire et interpréter les données pour en extraire des résultats fiables.</p></div>
-        <div class="comp-card"><span class="num">05</span><span class="code">Valoriser</span><h3>Valoriser une production en contexte pro</h3><p>Restituer et communiquer les résultats de façon claire et adaptée aux destinataires.</p></div>
+        <div class="comp-card"><span class="num">01</span><span class="code">EMS</span><h3>Modéliser dans un cadre statistique</h3><p>Recueillir, échantillonner et modéliser des données selon une démarche statistique rigoureuse.</p></div>
+        <div class="comp-card"><span class="num">02</span><span class="code">Traiter</span><h3>Traiter des données à des fins décisionnelles</h3><p>Nettoyer, transformer et structurer les données pour les rendre exploitables.</p></div>
+        <div class="comp-card"><span class="num">03</span><span class="code">Analyser</span><h3>Analyser statistiquement les données</h3><p>Explorer, décrire et interpréter les données pour en extraire des résultats fiables.</p></div>
+        <div class="comp-card"><span class="num">04</span><span class="code">Valoriser</span><h3>Valoriser une production en contexte pro</h3><p>Restituer et communiquer les résultats de façon claire et adaptée aux destinataires.</p></div>
       </div>
     </div>
   </section>
@@ -522,16 +514,11 @@
     <button class="modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     <div class="modal-gallery">
       <div class="modal-main">
-        <img src="assets/images/ACP-1.png" alt="ACP visuel" style="display:none">
+        <img src="assets/images/ACP-1.png" alt="ACP visuel">
         <div class="media-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg><span>Image à venir</span></div>
-        <video class="modal-main-video" controls preload="metadata" playsinline>
-          <source src="assets/projet-acp.mp4" type="video/mp4">
-          Votre navigateur ne permet pas de lire cette vidéo.
-        </video>
       </div>
       <div class="modal-thumbs">
-        <button class="modal-thumb modal-thumb-video active" data-type="video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Vidéo</button>
-        <button class="modal-thumb"><img src="assets/images/ACP-1.png" alt="ACP 1"></button>
+        <button class="modal-thumb active"><img src="assets/images/ACP-1.png" alt="ACP 1"></button>
         <button class="modal-thumb"><img src="assets/images/ACP-3.png" alt="ACP 2"></button>
       </div>
     </div>
@@ -541,7 +528,7 @@
       <div class="modal-meta">Reporting d'analyse multivariée · BUT Sciences des Données</div>
       <div class="modal-desc">
         <p>Analyse en Composantes Principales sur un jeu de données réel : statistiques descriptives, matrice des corrélations, calcul de l'inertie, puis réalisation de l'ACP sous R et interprétation des axes et du plan factoriel.</p>
-        <p>Le projet a donné lieu à un reporting d'analyse multivariée présenté en soutenance, à retrouver dans la galerie ci-dessus (onglet « Vidéo »).</p>
+        <p>Le projet a donné lieu à un reporting d'analyse multivariée présenté en soutenance.</p>
       </div>
     </div>
   </div>
